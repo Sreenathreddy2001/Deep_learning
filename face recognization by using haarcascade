@@ -1,0 +1,17 @@
+import cv2
+front_face_detection=cv2.CascadeClassifier(cv2.data.haarcascades+'haarcascade_frontalface_default.xml')
+img=cv2.imread(r'C:\Users\Admin\OneDrive\Desktop\data science\resume\Sanju-Samson-India.png')
+cv2.imshow('my_image',img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+gray_scale=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+cv2.imshow('my_image',gray_scale)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+face=front_face_detection.detectMultiScale(gray_scale)
+for (x,y,w,h) in face:
+    cv2.rectangle(img,(x,y),(x+w,y+h),(0,255,0),5)
+
+cv2.imshow('image',img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
